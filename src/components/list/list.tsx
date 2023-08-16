@@ -1,12 +1,21 @@
-export const List = () => (
-  <>
-    <>1</>
-    <>2</>
-    <>3</>
-    <>4</>
-    <>5</>
-    <>6</>
-    <>7</>
-    <>8</>
-  </>
-);
+import { Card } from "../card";
+import { Wrapper } from "./styled";
+
+interface Pokemon {
+  name: string;
+  url: string;
+}
+
+type Props = {
+  pokemons: Pokemon[];
+}
+
+export const List: React.FC<Props> = ( {pokemons} ) => {
+  return (
+    <Wrapper>
+       {pokemons.map((pokemon: Pokemon) => (
+        <Card key={pokemon.name} pokemon={pokemon} />
+      ))}
+    </Wrapper>
+  );
+}
